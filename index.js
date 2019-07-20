@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const express = require('express')
-bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const app = express()
 const port = 4000
@@ -14,10 +14,17 @@ app.get('/', (req, res) => {
   //res.send(req.body)
   
   stoppaInData('exempelnamn1', 'exempeltext1')
-} 
+})
 
+app.post('/', (req, res) => {
+  //res.send('Här kommer det tillbaka från GET "/" ')
+  res.send('post testar')
   
-)
+  queryTest()
+  
+})
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // Option 1: Passing parameters separately
@@ -72,7 +79,7 @@ User.sync({ force: true }).then(() => {
 function queryTest() {
 
 User.findAll().then(users => {
-  console.log("All users:");
+  console.log('här börjar users', users);
 });
 
 }
