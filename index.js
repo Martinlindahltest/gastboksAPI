@@ -1,13 +1,18 @@
 const Sequelize = require('sequelize');
-
 const express = require('express')
+bodyParser = require('body-parser');
 
 const app = express()
 const port = 4000
 
-app.get('/', (req, res) => {
-  res.send('Här kommer det tillbaka från GET "/" ')
+// support parsing of application/json type post data
+app.use(bodyParser.json());
 
+
+app.get('/', (req, res) => {
+  //res.send('Här kommer det tillbaka från GET "/" ')
+  //res.send(req.body)
+  
   stoppaInData('exempelnamn1', 'exempeltext1')
 } 
 
@@ -60,6 +65,14 @@ User.sync({ force: true }).then(() => {
     namn: namnInput,
     text: textInput
   });
+});
+
+}
+
+function queryTest() {
+
+User.findAll().then(users => {
+  console.log("All users:");
 });
 
 }
