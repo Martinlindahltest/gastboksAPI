@@ -79,7 +79,7 @@ User.sync({ force: true }).then(() => {
 function queryTest() {
 
 User.findAll().then(users => {
-  console.log('här börjar users', users);
+  console.log('här börjar users', users[0].dataValues.namn);
 });
 
 }
