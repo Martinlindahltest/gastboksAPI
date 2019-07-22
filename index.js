@@ -13,14 +13,15 @@ app.get('/', (req, res) => {
   //res.send('Här kommer det tillbaka från GET "/" ')
   //res.send(req.body)
   
-  stoppaInData('exempelnamn1', 'exempeltext1')
+  stoppaInData('exempelnamn12', 'exempeltext1')
 })
 
 app.post('/', (req, res) => {
-  //res.send('Här kommer det tillbaka från GET "/" ')
-  res.send('post testar')
+  // här frågas databasen om all data Det som skickas tillbaka är det som skrivs i funktionen nedan 
+  User.findAll().then(val => {
+    res.send(val[0].dataValues.namn)
+  });
   
-  queryTest()
   
 })
 
@@ -78,8 +79,10 @@ User.sync({ force: true }).then(() => {
 
 function queryTest() {
 
-User.findAll().then(users => {
-  console.log('här börjar users', users[0].dataValues.namn);
+
+User.findAll().then(val => {
+  //console.log('här börjar users', users[0].dataValues.namn);
+  return val[0].dataValues.namn
 });
 
 }
