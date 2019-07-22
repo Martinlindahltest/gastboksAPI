@@ -9,17 +9,20 @@ const port = 4000
 app.use(bodyParser.json());
 
 
-app.get('/', (req, res) => {
-  //res.send('Här kommer det tillbaka från GET "/" ')
-  //res.send(req.body)
+app.post('/', (req, res) => {
+
   
-  stoppaInData('exempelnamn12', 'exempeltext1')
+  //stoppaInData('exempelnamn12', 'exempeltext1')
+  stoppaInData(req.body.namn, req.body.text)
+
 })
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
   // här frågas databasen om all data Det som skickas tillbaka är det som skrivs i funktionen nedan 
   User.findAll().then(val => {
-    res.send(val[0].dataValues.namn)
+    //res.send(val[0].dataValues.namn)
+    res.send(val[0])
+
   });
   
   
