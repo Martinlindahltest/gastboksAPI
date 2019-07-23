@@ -5,8 +5,18 @@ const bodyParser = require('body-parser');
 const app = express()
 const port = 4000
 
+
+
 // support parsing of application/json type post data
 app.use(bodyParser.json());
+
+app.use((req, res, next) => { 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+
+});
 
 
 app.post('/', (req, res) => {
@@ -26,12 +36,12 @@ app.get('/', (req, res) => {
   // här frågas databasen om all data Det som skickas tillbaka är det som skrivs i funktionen nedan 
   User.findAll().then(val => {
     //res.send(val[0].dataValues.namn)
-    res.send(val[0])
+    res.send(val)
 
   });
   
   
-})
+})  
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
@@ -86,7 +96,7 @@ User.sync(
 });
 
 }
-
+/*
 function queryTest() {
 
 
@@ -96,3 +106,4 @@ User.findAll().then(val => {
 });
 
 }
+* */
