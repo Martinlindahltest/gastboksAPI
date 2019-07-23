@@ -14,6 +14,11 @@ app.post('/', (req, res) => {
   
   //stoppaInData('exempelnamn12', 'exempeltext1')
   stoppaInData(req.body.namn, req.body.text)
+  res.send({
+    metod: 'post',
+    namn: req.body.namn,
+    text: req.body.text
+  })
 
 })
 
@@ -70,7 +75,9 @@ function stoppaInData(namnInput, textInput) {
 
       // stoppar in data och droppar table if it exist
   // Note: using `force: true` will drop the table if it already exists
-User.sync({ force: true }).then(() => {
+User.sync(
+  //{ force: true }
+  ).then(() => {
   // Now the `users` table in the database corresponds to the model definition
   return User.create({
     namn: namnInput,
