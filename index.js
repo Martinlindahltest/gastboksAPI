@@ -6,7 +6,7 @@ const app = express()
 const port = 4000
 
 
-
+//Läsa skriva helt färdigt
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 
