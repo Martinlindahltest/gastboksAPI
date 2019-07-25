@@ -24,6 +24,7 @@ app.post('/', (req, res) => {
   
   //stoppaInData('exempelnamn12', 'exempeltext1')
   stoppaInData(req.body.namn, req.body.text)
+  //console.log(req.body.namn, req.body.text)
   res.send({
     metod: 'post',
     namn: req.body.namn,
