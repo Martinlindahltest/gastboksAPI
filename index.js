@@ -49,8 +49,8 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // Option 1: Passing parameters separately
 // connect
-const sequelize = new Sequelize('new_schema_martin', 'root', 'root', {
-  host: 'localhost',
+const sequelize = new Sequelize('new_schema_martin', 'dbmasteruser', 'pass12345', {
+  host: 'ls-a2b3083d7132e8853545da69ecc4051f30376ff0.c0ymarckwms2.eu-central-1.rds.amazonaws.com',
   dialect: 'mysql'
 })
 
